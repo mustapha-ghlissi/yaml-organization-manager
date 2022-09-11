@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Organization details{% endblock %}
+
+{% block content %}
+    <div class="d-flex flex-wrap align-items-center justify-content-between">
+        <h3>
+            Organization details
+        </h3>
+        <a href="{{ path('app_organization_index') }}" class="btn btn-link">
+            Back to the list
+        </a>
+    </div>
+    <hr>
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <tr>
+                <th>Name</th>
+                <td>{{ organization['name'] }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ organization['description'] }}</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered">
+            <thead>
+            <tr class="bg-light">
+                <th colspan="3">
+                    Users List
+                </th>
+                <th>
+                    <a href="{{ path('app_organization_user_new', {index: index}) }}" class="btn btn-outline-primary d-block">
+                        Add User
+                    </a>
+                </th>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <th>Password</th>
+                <th>Role</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for user in organization['users'] %}
+                <tr>
+                    <td>{{ user.name }}</td>
+                    <td>{{ user.password }}</td>
+                    <td>{{ user.role|join(',') }}</td>
+                    <td>
+                        <ul class="list-unstyled m-O p-O d-inline-flex align-items-center">
+                            <li class="p-1">
+                                <a href="{{ path('app_organization_user_edit', {index: index, userIndex: loop.index0}) }}" class="btn btn-success">
+                                    <i class="fa-solid fa-pencil"></i>
+                                </a>
+                            </li>
+                            <li class="p-1">
+                                {% include 'user/_form_delete.html.twig' %}
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

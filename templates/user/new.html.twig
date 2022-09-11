@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New user{% endblock %}
+
+{% block content %}
+    <div class="d-flex flex-wrap align-items-center justify-content-between">
+        <h3>
+            New user
+        </h3>
+        <a href="{{ path('app_organization_show', {index: index}) }}" class="btn btn-link">
+            Back to list
+        </a>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2">
+            <div class="card">
+                <div class="card-header">
+                    New user
+                </div>
+                <div class="card-body">
+                    {% include 'user/_form.html.twig' %}
+                </div>
+                <div class="card-footer">
+                    <button class="btn btn-primary btn-block" form="{{ form.vars.attr.id }}">
+                        Save
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

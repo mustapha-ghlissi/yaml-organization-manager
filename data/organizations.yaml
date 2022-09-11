@@ -1,0 +1,13 @@
+organizations:
+  -
+    name: Google
+    description: 'Google LLC /ˈguːgəl/ est une entreprise américaine de services technologiques fondée en 1998 dans la Silicon Valley, en Californie, par Larry Page et Sergey Brin, créateurs du moteur de recherche Google. C''est une filiale de la société Alphabet depuis août 2020'
+    users:
+      -
+        name: phanix
+        role: [ADMIN, CEO, MANAGER]
+        password: test
+      -
+        name: mustapha
+        role: [ADMIN, CEO, MANAGER]
+        password: test

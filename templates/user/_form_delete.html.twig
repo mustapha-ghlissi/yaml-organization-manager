@@ -1,0 +1,6 @@
+<form method="post" action="{{ path('app_organization_user_delete', {index: index, userIndex: loop.index0}) }}" onsubmit="return confirm('Do you really want to remove this user from the organization ?')">
+    <input type="hidden" name="token" value="{{ csrf_token('delete-' ~ index ~ '-' ~ loop.index0) }}">
+    <button class="btn btn-danger">
+        <i class="fa-regular fa-trash-can"></i>
+    </button>
+</form>

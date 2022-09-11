@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des organisations{% endblock %}
+
+{% block content %}
+    <div class="d-flex flex-wrap align-items-center justify-content-between">
+        <h3>
+            Liste des organisations
+        </h3>
+        <a href="{{ path('app_organization_new') }}" class="btn btn-outline-primary">
+            Create organization
+        </a>
+    </div>
+    <hr>
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered">
+            <thead>
+            <tr>
+                <td>Name</td>
+                <td>Description</td>
+                <td>Users</td>
+                <td>Action</td>
+            </tr>
+            </thead>
+            <tbody>
+            {% for organization in organizations %}
+                <tr>
+                    <td>{{ organization.name }}</td>
+                    <td>{{ organization.description }}</td>
+                    <td>
+                        <a href="{{ path('app_organization_user_new', {index: loop.index0}) }}" class="btn btn-success btn-sm">
+                            <i class="fa-solid fa-plus-circle"></i> Add user ({{ organization.users|length }} users)
+                        </a>
+                    </td>
+                    <td>
+                        <ul class="list-unstyled m-O p-O d-inline-flex align-items-center">
+                            <li class="p-1">
+                                <a href="{{ path('app_organization_edit', {index: loop.index0}) }}" class="btn btn-success">
+                                    <i class="fa-solid fa-pencil"></i>
+                                </a>
+                            </li>
+                            <li class="p-1">
+                                <a href="{{ path('app_organization_show', {index: loop.index0}) }}" class="btn btn-secondary">
+                                    <i class="fa-solid fa-eye"></i>
+                                </a>
+                            </li>
+                            <li class="p-1">
+                                {% include 'organization/_form_delete.html.twig' %}
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
